@@ -6,7 +6,6 @@ const PORT = process.env.PORT || 4000;
 const authRouter = require('./routes/authRoute');
 const bodyParser = require('body-parser');
 const { notFound, errorhandle } = require('./middleware/errorHandler');
-dbconnect() 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use('/api/user', authRouter)
@@ -15,6 +14,7 @@ app.use(notFound)
 app.use(errorhandle)
 
 
-app.listen(PORT, ()=>{
+app.listen(PORT,async ()=>{
+    const connect = await dbconnect() 
     console.log(`Server is running at PORT ${PORT}`)
 })
