@@ -14,6 +14,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
+app.get('/', (req,res)=>{
+    res.send({
+        message:"welcome to E-com backend"
+    })
+})
 app.use('/api/user', authRouter)
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
