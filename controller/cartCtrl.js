@@ -4,7 +4,7 @@ const User = require("../models/userModel");
 const asyncHandler = require("express-async-handler");
 
 const addToCart = asyncHandler(async (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.params.id;
     const productId = req.body.productId;
     const quantity = req.body.quantity || 1;
   
@@ -38,8 +38,9 @@ const addToCart = asyncHandler(async (req, res) => {
 
 
 const removeToCart = asyncHandler( async (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.params.id;
     const itemId = req.params.itemId;
+    console.log('itemId',itemId);
   
     try {
       // Find the user's cart
@@ -69,7 +70,7 @@ const removeToCart = asyncHandler( async (req, res) => {
 
 
   const  getAllCartItem = asyncHandler(async (req, res) => {
-    const userId = req.params.userId;
+    const userId = req.params.id;
   
     try {
       // Find the user's cart
