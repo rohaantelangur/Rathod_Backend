@@ -29,10 +29,11 @@ const getSingleproduct = asyncHandler(async(req,res)=>{
 })
 
 const searchByName = asyncHandler(async (req, res) => {
-    const productName = req.params.name;
+    const bookName = req.params.name;
+    console.log(bookName);
   
     try {
-      const products = await Product.find({ name: { $regex: bookName, $options: 'i' } });
+      const products = await Product.find({ booksName: { $regex: bookName, $options: 'i' } });
   
       if (products.length === 0) {
         return res.status(404).json({ message: 'No products found' });
